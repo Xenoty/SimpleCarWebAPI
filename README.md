@@ -29,7 +29,7 @@ A simple, self-contained web api to demonstrate how to perform api commands and 
 ### Requirements
 
 - [Visual Studio](https://visualstudio.microsoft.com/vs/community/)
-- [ASP.NET Core Runtime 5.0](https://dotnet.microsoft.com/en-us/download/dotnet/5.0)
+- [.NET 5.0 Runtime](https://dotnet.microsoft.com/en-us/download/dotnet/5.0)
 
 ### Steps
 

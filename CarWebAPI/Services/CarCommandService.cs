@@ -56,6 +56,28 @@ namespace CarWebAPI.Services
                 throw new ApiException("Field 'makeId' cannot be 0 or less than 0. Please enter a value.");
             }
 
+            // Validate if makeID exists
+            bool makeIdExists = false;
+            using(StreamReader streamReader = new StreamReader(_carMakesFilePath))
+            {
+                string row = null;
+                while ((row = streamReader.ReadLine()) != null)
+                {
+                    string[] currentRow = row.Split(",");
+                    if (int.Parse(currentRow[0]) == makeId)
+                    {
+                        makeIdExists = true;
+                        break;
+                    }
+                }
+                streamReader.Close();
+            }
+
+            if (!makeIdExists)
+            {
+                throw new ApiException("Could not find Car Make with MakeId '" + makeId + "'.");
+            }
+
             string lastLine = File.ReadLines(_carModelsFilePath).Last();
             string[] currentRowAttributes = lastLine.Split(",").ToArray();
             int newCareMakeId = int.Parse(currentRowAttributes[0]) + 1;

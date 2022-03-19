@@ -12,10 +12,10 @@ namespace CarWebAPI.Controllers
     [ApiController]
     public class CarQueryController : ControllerBase
     {
-        private ICarQueryService _carQueryService;
+        private ICarQueryRepository _carQueryService;
         private IMapper _mapper;
 
-        public CarQueryController(ICarQueryService carQueryService,
+        public CarQueryController(ICarQueryRepository carQueryService,
                                   IMapper mapper)
         {
             _carQueryService = carQueryService;

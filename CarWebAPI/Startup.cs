@@ -32,12 +32,12 @@ namespace CarWebAPI
             services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies()); // TODO: Is this required?
 
             // Reference to service
-            services.AddSingleton<CarQueryService>();
-            services.AddSingleton<CarCommandService>();
+            services.AddSingleton<CarQueryRepository>();
+            services.AddSingleton<CarCommandRepository>();
 
             // Configure DI for application services
-            services.AddScoped<ICarQueryService, CarQueryService>();
-            services.AddScoped<ICarCommandService, CarCommandService>();
+            services.AddScoped<ICarQueryRepository, CarQueryRepository>();
+            services.AddScoped<ICarCommandRepository, CarCommandRepository>();
 
             services.AddCors();
             services.AddControllers();

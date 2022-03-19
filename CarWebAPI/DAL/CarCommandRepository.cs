@@ -7,7 +7,7 @@ using System.Linq;
 
 namespace CarWebAPI.Services
 {
-    public interface ICarCommandService
+    public interface ICarCommandRepository
     {
         void CreateMake(string type);
         void CreateModelForSpecificMake(string model, int makeId);
@@ -17,12 +17,12 @@ namespace CarWebAPI.Services
         void RemoveModel(int modelId);
     }
 
-    public class CarCommandService : ICarCommandService
+    public class CarCommandRepository : ICarCommandRepository
     {
         private string _carMakesFilePath;
         private string _carModelsFilePath;
 
-        public CarCommandService(IConfiguration configuration)
+        public CarCommandRepository(IConfiguration configuration)
         {
             _carMakesFilePath = configuration.GetValue<string>("DataSettings:CarMakes");
             _carModelsFilePath = configuration.GetValue<string>("DataSettings:CarModels");

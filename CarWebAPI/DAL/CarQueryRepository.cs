@@ -6,7 +6,7 @@ using System.IO;
 
 namespace CarWebAPI.Services
 {
-    public interface ICarQueryService
+    public interface ICarQueryRepository
     {
         List<CarMake> GetAllMakes();
         List<CarModel> GetAllModels();
@@ -14,12 +14,12 @@ namespace CarWebAPI.Services
         CarMake GetMakeById(int makeId);
     }
 
-    public class CarQueryService : ICarQueryService
+    public class CarQueryRepository : ICarQueryRepository
     {
         private string _carMakesFilePath;
         private string _carModelsFilePath;
 
-        public CarQueryService(IConfiguration configuration)
+        public CarQueryRepository(IConfiguration configuration)
         {
             _carMakesFilePath = configuration.GetValue<string>("DataSettings:CarMakes");
             _carModelsFilePath = configuration.GetValue<string>("DataSettings:CarModels");

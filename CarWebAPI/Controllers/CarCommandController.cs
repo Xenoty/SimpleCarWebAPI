@@ -11,10 +11,10 @@ namespace CarWebAPI.Controllers
     [ApiController]
     public class CarCommandController : ControllerBase
     {
-        private ICarCommandService _carCommandService;
+        private ICarCommandRepository _carCommandService;
         private IMapper _mapper;
 
-        public CarCommandController(ICarCommandService carCommandService,
+        public CarCommandController(ICarCommandRepository carCommandService,
                                     IMapper mapper)
         {
             _carCommandService = carCommandService;

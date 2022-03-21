@@ -1,3 +1,7 @@
+# Simple Car Web API
+
+![Simple Car Web API Screenshot](https://user-images.githubusercontent.com/60667206/159291300-a4e98cdd-c9a1-42fc-ac91-5587468885d4.png)
+
 1. [Summary](#summary)
     1. [Key Notes](#key-notes)
     2. [Tech Stack](#tech-stack)
@@ -40,9 +44,11 @@ A simple, self-contained web api to demonstrate how to perform api commands and 
 ## Design Pattern Choices
  
 ### Repository Pattern
-The Repository pattern was chosen to decouple the data access layer from domain model layer. This decoupling helps remove any dependencies and allows the WebAPI to run independently of the domain layer. This means the WebAPI can be hosted indepently and any application (Web, Mobile, Desktop etc.) can request data through api calls. 
+
+The [Repository Pattern](https://docs.microsoft.com/en-us/dotnet/architecture/microservices/microservice-ddd-cqrs-patterns/infrastructure-persistence-layer-design#the-repository-pattern) was chosen to decouple the data access layer from domain model layer. This decoupling helps remove any dependencies, repitition of logic and enforces separation. This is done through Dependency Injection in which the repositories are only injected into the required domain layers.
 
 The Service layer was excluded from this project, as the service layer adds an extra layer between the Domain and Repository layer. This layer esssentially duplicates the Respostory layer, which requires duplication of code for each new action or query in the repository. Including the service layer will slow down development and require more effort in adding new logic to the repository layer.
 
 ### CQS Pattern
-The Command-Query Seperation Pattern was chosen to seperate the action logic (Create, Update, Delete) from the query logic (Read). This seperates the logic of concern and makes it easier to identify and use. New logic for can be easily added by identifying whether it is a command or query, simplifying the development process. With this seperation it also makes it easier to enforce restricted access for the command logic. 
+
+The [CQS Pattern](https://en.wikipedia.org/wiki/Command%E2%80%93query_separation) was chosen to seperate the action logic (Create, Update, Delete) from the query logic (Read). This seperates the logic of concern and makes it easier to identify and use. New logic for can be easily added by identifying whether it is a command or query, simplifying the development process. With this seperation it also makes it easier to enforce restricted access for the command logic. 
